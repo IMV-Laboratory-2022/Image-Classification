@@ -4,7 +4,9 @@
     <img src="contents/overview cnn.ppm" alt="overview cnn" width="480" style="vertical-align:middle">
 </p>
 
-# Convolution Layer
+## Input + Convolution Backbone
+
+### Convolution Layer
 
 Convolution → Ektraksi Ciri (Feature Extraction)
 
@@ -20,6 +22,7 @@ tf.keras.layers.Conv2D(
     strides=(1, 1),
     padding='valid',
     activation=None,
+    input_shape=(height, width, channel)
 )
 ```
 
@@ -30,6 +33,7 @@ tf.keras.layers.Conv2D(
     - valid → tidak ada padding
     - same → padding nol merata kiri/kanan/atas/bawah
 - activation → fungsi aktivasi untuk digunakan
+- input_shape → input gambar
 
 ### Pooling Layer
 
@@ -53,9 +57,11 @@ tf.keras.layers.MaxPool2D(
     - valid → tidak ada padding
     - same → padding nol merata kiri/kanan/atas/bawah
 
-### Fully Connected Layer vs Global Average Pooling
+## Classifier Head (ANN)
 
-Fully Connected Layer dan Global Average Pooling → input layer
+### Flatten dan Global Average Pooling
+
+Flatten dan Global Average Pooling → input layer
 
 <p align="center">
     <img src="contents/fully connected layer vs global average pooling.png" alt="fully connected layer vs global average pooling" width="640" style="vertical align:middle">
@@ -66,21 +72,8 @@ Fully Connected Layer dan Global Average Pooling → input layer
 |      hxwxd (1 dimension)   |               d (1 dimension)            |
 | tf.keras.layers.Flatten()  | tf.keras.layers.GlobalAveragePooling2D() |
 
-## Artificial Neural Network (ANN) / Dense Neural Network
+### Hidden Layer
 
-<p align="center">
-    <img src="contents/ANN.png" alt="ANN/DNN" width="480" style="vertical-align:middle">
-</p>
-
-Bagian-bagian Artificial Neural Network (ANN) / Dense Neural Network sebagai berikut:
-- Input Layer
-  ```
-    tf.keras.layers.Dense(units, input_shape=....)
-  ```
-  - input_shape → dimensi ruang input
-  - units → dimensi ruang output
-
-- Hidden Layer
   ```
     tf.keras.layers.Dense(units, activation=None)
   ```
@@ -97,7 +90,7 @@ Bagian-bagian Artificial Neural Network (ANN) / Dense Neural Network sebagai ber
   tf.keras.layers.Dropout(rate)
   ```
   
-- Output Layer
+### Output Layer
 
   ```
     tf.keras.layers.Dense(units, activation=None)
