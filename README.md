@@ -57,6 +57,8 @@ tf.keras.layers.MaxPool2D(
 
 ### Fully Connected Layer vs Global Average Pooling
 
+Fully Connected Layer dan Global Average Pooling → input layer
+
 <p align="center">
     <img src="contents/fully connected layer vs global average pooling.png" alt="fully connected layer vs global average pooling" width="640" style="vertical align:middle">
 </p>
